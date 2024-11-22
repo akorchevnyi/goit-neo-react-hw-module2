@@ -3,6 +3,7 @@ import "./App.css";
 import Description from "./description/Description.jsx";
 import Options from "./options/Options.jsx";
 import Feedback from "./feedback/Feedback.jsx";
+import Notification from "./notification/Notification.jsx";
 
 function App() {
     const emptyState = { good: 0, neutral: 0, bad: 0 };
@@ -35,7 +36,11 @@ function App() {
         <>
             <Description/>
             <Options updateFeedback={updateFeedback} totalFeedback={totalFeedback}/>
-            <Feedback feedback={feedback} totalFeedback={totalFeedback} positive={positive}/>
+            {totalFeedback
+                ? <Feedback feedback={feedback} totalFeedback={totalFeedback} positive={positive}/>
+                : <Notification/>
+            }
+
         </>
     );
 }
